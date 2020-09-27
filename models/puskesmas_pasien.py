@@ -12,6 +12,7 @@ class puskesmas_pasien(models.Model):
     golongan_darah = fields.Selection([("a","A"), ("b", "B"), ("ab", "AB"), ("o", "O") ], string="Golongan Darah")
     notes = fields.Text (string="Notes")
     image = fields.Binary (string="Foto")
+    mobile = fields.Integer(string="No Hp")
     jenis_kelamin = fields.Selection([("pria","Laki-laki"), ("perempuan", "Perempuan")], string="Jenis Kelamin")
     pekerjaan = fields.Selection([
         ('pelajar_mhs','Pelajar/Mahasiswa'),
