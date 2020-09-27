@@ -1,0 +1,96 @@
+<odoo>
+    
+        <!-- Tree View Pasien -->
+        <record id="pasien_tree" model="ir.ui.view">
+            <field name="name">puskesmas_pasien.tree</field>
+            <field name="model">puskesmas_pasien</field>
+            <field name="arch" type="xml">            
+                <tree string="Pasien">
+                    <field name="nama_pasien"/>
+                    <field name="usia_pasien"/>
+                    <field name="jenis_kelamin"/>
+                    <field name="golongan_darah"/>
+                    <field name="notes"/>
+                </tree>      
+            </field>
+        </record>
+
+        <!-- search View Pasien -->
+        <record id="pasien_search" model="ir.ui.view">
+            <field name="name">puskesmas_pasien.search</field>
+            <field name="model">puskesmas_pasien</field>
+            <field name="arch" type="xml">            
+                <search string="Search Pasien">
+                    <field name="nama_pasien"/>
+                    <field name="usia_pasien"/>
+                    <filter name="group_gender" string="Jenis Kelamin" domain="[]" context="{'group_by':'jenis_kelamin'}" />
+                    <group expand="0">
+                        <filter name="group_golongan_darah" string="Golongan darah" domain="[]" context="{'group_by':'golongan_darah'}"/>
+                    </group>
+                </search>     
+            </field>
+        </record>
+
+        <!-- Form View Pasien -->
+        <record id="pasien_form" model="ir.ui.view">
+            <field name="name">puskesmas_pasien.form</field>
+            <field name="model">puskesmas_pasien</field>
+            <field name="arch" type="xml">            
+                <form string="Pasien">
+                    <sheet><!-- sheet digunakan untuk membuat border -->
+                        <group> <!-- group digunakan untuk memisahkan tampilan jadi 2 kolom-->
+                            <group col="2">
+                                <field name="kode"/>
+                                <field name="nama_pasien"/>
+                                <field name="usia_pasien"/>
+                            </group>
+                            <group>                           
+                                <field name="golongan_darah"/>
+                                <field name="jenis_kelamin"/>
+                                <field name="status"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="pekerjaan"/>
+                                <field name="image"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="History Pasien">
+                                <!--<field name="history_dokter" readonly="1" attrs="{'invisible': [('dokter','!=',True)]}"/>-->
+                            </page>
+							<page string="Note">
+								<group>
+									<field name="notes" nolabel="1" class="oe_inline" placeholder="Note"/>
+								</group>
+							</page>
+						</notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk menu pasien -->
+        <record id="action_pasien" model="ir.actions.act_window">
+            <field name="name">Pasien</field>
+            <field name="res_model">puskesmas_pasien</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+                <p class="0_view_nocontent_smiling_face">
+                    Create your first Patient.. Ciayooo!!
+                </p>
+            </field>
+        </record>
+
+        <!-- subMenu pasien -->
+        <!-- menu utama ada di puskesmas_pendaftaran.xml -->
+        <menuitem id="puskesmas_pasien" name="Pasien" parent="puskesmas_root" action="action_pasien" sequence="1" />
+
+</odoo>

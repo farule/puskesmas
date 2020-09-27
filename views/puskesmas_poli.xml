@@ -1,0 +1,60 @@
+<odoo>
+    
+        <!-- Tree View Pasien -->
+        <record id="poli_tree" model="ir.ui.view">
+            <field name="name">puskesmas_poli.tree</field>
+            <field name="model">puskesmas_poli</field>
+            <field name="arch" type="xml">            
+                <tree string="Poli">
+                    <field name="kode"/>
+                    <field name="nama_poli"/>
+                </tree>      
+            </field>
+        </record>
+
+        <!-- search View Pasien -->
+        <record id="poli_search" model="ir.ui.view">
+            <field name="name">puskesmas_poli.search</field>
+            <field name="model">puskesmas_poli</field>
+            <field name="arch" type="xml">            
+                <search string="Search Poliklinik">
+                    <field name="nama_poli"/>
+                    <field name="kode"/>
+                </search>     
+            </field>
+        </record>
+
+        <!-- Form View Pasien -->
+        <record id="poli_form" model="ir.ui.view">
+            <field name="name">puskesmas_poli.form</field>
+            <field name="model">puskesmas_poli</field>
+            <field name="arch" type="xml">            
+                <form string="Poliklinik">
+                    <sheet><!-- sheet digunakan untuk membuat border -->
+                        <group col="2"> <!-- group digunakan untuk memisahkan tampilan jadi beberapa kolom-->                            
+                            <field name="kode"/>
+                            <field name="nama_poli"/>                           
+                        </group>                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk menu pasien -->
+        <record id="action_poli" model="ir.actions.act_window">
+            <field name="name">Poliklinik</field>
+            <field name="res_model">puskesmas_poli</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+                <p class="0_view_nocontent_smiling_face">
+                    Create your first Poli.. Ciayooo!!
+                </p>
+            </field>
+        </record>
+
+        <!-- subMenu poli -->
+        <!-- menu utama ada di puskesmas_pendaftaran.xml -->
+        <menuitem id="puskesmas_poli" name="Poliklinik" parent="puskesmas_root" action="action_poli" sequence="3" />
+
+</odoo>
