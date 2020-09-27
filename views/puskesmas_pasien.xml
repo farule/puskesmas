@@ -48,6 +48,7 @@
                                 <field name="golongan_darah"/>
                                 <field name="jenis_kelamin"/>
                                 <field name="status"/>
+                                <field name="keluhan"/>
                                 <field name="mobile"/>
                             </group>
                         </group>

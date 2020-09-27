@@ -13,6 +13,7 @@ class puskesmas_pasien(models.Model):
     notes = fields.Text (string="Notes")
     image = fields.Binary (string="Foto")
     mobile = fields.Integer(string="No Hp")
+    keluhan = fields.Char('Keluhan')
     jenis_kelamin = fields.Selection([("pria","Laki-laki"), ("perempuan", "Perempuan")], string="Jenis Kelamin")
     pekerjaan = fields.Selection([
         ('pelajar_mhs','Pelajar/Mahasiswa'),
