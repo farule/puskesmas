@@ -22,7 +22,7 @@ class puskesmas_pasien(models.Model):
         ('swasta','Swasta'),
         ('lain','Lain-Lain'),
     ], string='Pekerjaan')
-    tgl_lahir = fields.Date('Tanggal Lahir')
+    tgl_lahir = fields.Date('Pilih Tanggal Lahir')
     kode = fields.Char(string='Kode', default='/')
     status = fields.Selection([
         ('lajang','Lajang'),
