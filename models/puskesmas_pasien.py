@@ -15,6 +15,7 @@ class puskesmas_pasien(models.Model):
     mobile = fields.Integer(string="No Hp")
     keluhan = fields.Char('Keluhan')
     jenis_kelamin = fields.Selection([("pria","Laki-laki"), ("perempuan", "Perempuan")], string="Jenis Kelamin")
+    nama_ibu_kandung = fields.Char(string="Nama Ibu Kandung")
     pekerjaan = fields.Selection([
         ('pelajar_mhs','Pelajar/Mahasiswa'),
         ('pegawai_negeri','Pegawai Negeri'),
